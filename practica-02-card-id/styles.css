@@ -1,0 +1,243 @@
+/* Variables de Diseño Minimalista - Paleta Neutra */
+:root {
+    --md-sys-color-background: #e9e7e2;
+    --md-sys-color-surface: #ffffff;
+    --md-sys-color-on-surface: #2b2b2b;
+    --md-sys-color-primary: #3a3a3a;
+    --md-sys-color-primary-container: #f0efec;
+    --md-sys-color-outline: #dedcd7;
+    --md-sys-color-secondary-text: #6e6e6e;
+    --md-sys-elevation-3: 0 10px 20px rgba(0,0,0,0.08), 0 3px 6px rgba(0,0,0,0.06);
+    --md-shape-corner: 16px;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reseteo y Estilos Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--md-sys-color-background);
+    color: var(--md-sys-color-on-surface);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 16px;
+}
+
+.container {
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+/* Componente Tarjeta de Identificación */
+.id-card {
+    background-color: var(--md-sys-color-surface);
+    width: 100%;
+    border-radius: var(--md-shape-corner);
+    box-shadow: var(--md-sys-elevation-3);
+    overflow: hidden;
+    border: 1px solid var(--md-sys-color-outline);
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.id-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.06);
+}
+
+/* Cabecera minimalista */
+.card-header {
+    padding: 20px 20px 14px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: var(--md-sys-color-primary-container);
+    border-bottom: 1px solid var(--md-sys-color-outline);
+}
+
+.header-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--md-sys-color-on-surface);
+    text-transform: uppercase;
+}
+
+.header-subtitle {
+    font-size: 0.7rem;
+    color: var(--md-sys-color-secondary-text);
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+}
+
+/* Cuerpo de la Tarjeta */
+.card-body {
+    padding: 20px 20px 16px 20px;
+    text-align: center;
+    position: relative;
+}
+
+/* Foto de identificación estilo pasaporte */
+.photo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 14px;
+}
+
+.photo-placeholder {
+    width: 96px;
+    height: 120px;
+    border-radius: 8px;
+    background-color: var(--md-sys-color-primary-container);
+    border: 1.5px solid var(--md-sys-color-outline);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.photo-icon {
+    font-size: 48px;
+    color: var(--md-sys-color-secondary-text);
+}
+
+/* Información del Usuario */
+.user-info {
+    margin-bottom: 12px;
+}
+
+.user-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--md-sys-color-on-surface);
+    margin-bottom: 2px;
+}
+
+.user-role {
+    font-size: 0.78rem;
+    color: var(--md-sys-color-secondary-text);
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.user-id {
+    font-size: 0.75rem;
+    color: var(--md-sys-color-primary);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Divisor */
+.divider {
+    border: none;
+    height: 1px;
+    background-color: var(--md-sys-color-outline);
+    margin: 12px 0;
+}
+
+/* Cuadrícula de Metadatos */
+.meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    background-color: #f8f7f5;
+    padding: 10px;
+    border-radius: 12px;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.meta-label {
+    font-size: 0.63rem;
+    color: var(--md-sys-color-secondary-text);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.meta-value {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--md-sys-color-on-surface);
+}
+
+/* Pie de Tarjeta */
+.card-footer {
+    background-color: #fafaf9;
+    padding: 10px 20px;
+    border-top: 1px solid var(--md-sys-color-outline);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.code-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--md-sys-color-secondary-text);
+}
+
+.qr-icon {
+    font-size: 18px;
+}
+
+.code-text {
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.action-btn {
+    background: transparent;
+    border: none;
+    color: var(--md-sys-color-primary);
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition-smooth);
+}
+
+.action-btn:hover {
+    background-color: var(--md-sys-color-primary-container);
+}
+
+/* Notificación Toast */
+.toast {
+    position: fixed;
+    bottom: 24px;
+    background-color: #323232;
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-smooth);
+    z-index: 1000;
+}
+
+.toast.show {
+    opacity: 1;
+    visibility: visible;
+    bottom: 32px;
+}
