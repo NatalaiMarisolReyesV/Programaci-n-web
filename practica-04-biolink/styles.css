@@ -1,0 +1,128 @@
+/* Base & Typography */
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #be185d; /* Rosa fuerte / Magenta (Tailwind Pink-700) */
+  color: #fdf2f8; /* Blanco rosado claro */
+}
+
+.font-heading {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Skip Link Accessible Style */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  color: #831843;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  font-weight: 700;
+  z-index: 9999;
+  transition: top 0.2s ease;
+  border: 1px solid #fbcfe8;
+}
+
+.skip-link:focus {
+  top: 10px;
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+/* Tarjetas y Contenedores */
+.rpg-card {
+  background: #831843; /* Rosa oscuro profundo para contraste */
+  border: 1px solid #9d174d;
+  box-shadow: 0 4px 16px -2px rgba(74, 4, 38, 0.4);
+  border-radius: 0.5rem;
+  transition: all 0.25s ease-in-out;
+}
+
+/* Hover: cuadros resaltados con color rosa más bajo (claro) */
+.rpg-card:hover {
+  background-color: #fbcfe8 !important; /* Rosa suave / bajo */
+  color: #831843 !important; /* Texto oscuro para legibilidad */
+  border-color: #f472b6 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Asegurar que el texto dentro de las tarjetas cambie de color al poner el cursor */
+.rpg-card:hover h2,
+.rpg-card:hover h3,
+.rpg-card:hover p,
+.rpg-card:hover span,
+.rpg-card:hover i,
+.rpg-card:hover .wf-text-dark {
+  color: #831843 !important;
+}
+
+/* Tarjeta Destacada */
+.rpg-card-gold {
+  background: #9d174d;
+  border: 2px solid #f472b6;
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.4);
+  border-radius: 0.5rem;
+  transition: all 0.25s ease-in-out;
+}
+
+.rpg-card-gold:hover {
+  background-color: #fce7f3 !important; /* Rosa pastel suave */
+  color: #831843 !important;
+  border-color: #ec4899 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+}
+
+.rpg-card-gold:hover h3,
+.rpg-card-gold:hover p,
+.rpg-card-gold:hover span {
+  color: #831843 !important;
+}
+
+/* Indicador de Enfoque Accesible */
+a:focus-visible, 
+button:focus-visible {
+  outline: 2px solid #fce7f3 !important;
+  outline-offset: 3px !important;
+}
+
+/* Modo Blueprint / Alto Contraste */
+.wireframe-mode {
+  background-color: #fdf2f8 !important;
+  color: #831843 !important;
+}
+
+.wireframe-mode .rpg-card,
+.wireframe-mode .rpg-card-gold {
+  background: #ffffff !important;
+  border: 2px dashed #db2777 !important;
+  color: #831843 !important;
+  box-shadow: none !important;
+}
+
+.wireframe-mode .wf-text-dark {
+  color: #831843 !important;
+}
+
+/* Componentes de Estado */
+.xp-bar-fill {
+  background-color: #f472b6;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Soporte para Movimiento Reducido */
+@media (prefers-reduced-motion: reduce) {
+  .xp-bar-fill, 
+  .transition, 
+  button, 
+  a,
+  .rpg-card,
+  .rpg-card-gold {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}
