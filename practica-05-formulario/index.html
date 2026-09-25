@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar Cotización</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="contact-form-container">
+        
+        <div id="formCard">
+            <h2>Solicitar Cotización</h2>
+            <p class="subtitle">Déjanos tus datos para brindarte atención personalizada en componentes y accesorios.</p>
+
+            <!-- Línea 19 corregida con https://formsubmit.co/ -->
+            <form action="https://formsubmit.co/za230111775@zapopan.tecmm.edu.mx" method="POST" id="contactForm">
+                
+                <!-- Desactiva el Captcha de FormSubmit -->
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="Nombre" placeholder="Ej. Juan Pérez" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="Correo" placeholder="ejemplo@correo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Teléfono / WhatsApp</label>
+                    <input type="tel" id="phone" name="Telefono" placeholder="Ej. 5512345678" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="interes">¿Qué estás buscando?</label>
+                    <select id="interes" name="Interes" required>
+                        <option value="" disabled selected>Selecciona una opción</option>
+                        <option value="Piezas y Componentes">Piezas y Componentes</option>
+                        <option value="Accesorios">Accesorios</option>
+                        <option value="Soporte / Asesoría">Soporte / Asesoría</option>
+                    </select>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="privacy" name="Privacidad" required>
+                    <label for="privacy">Acepto las <a href="#" target="_blank">políticas de privacidad</a></label>
+                </div>
+
+                <button type="submit" id="btnSubmit" class="submit-button">
+                    Solicitar cotización
+                </button>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>
