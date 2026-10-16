@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tres en Línea 3D</title>
+    
+    <!-- Fuentes Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800;900&display=swap" rel="stylesheet">
+
+    <!-- Nombre exacto de tu archivo CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <main class="game-container">
+        <header class="game-header">
+            <h1>Tres en Línea</h1>
+            <p class="subtitle">Tú (X) vs Máquina (O)</p>
+        </header>
+
+        <section class="score-board">
+            <div class="score-box">
+                <span class="label">Jugador (X)</span>
+                <span id="playerScore" class="score">0</span>
+            </div>
+            <div class="score-box">
+                <span class="label">Empates</span>
+                <span id="tiesScore" class="score">0</span>
+            </div>
+            <div class="score-box">
+                <span class="label">Máquina (O)</span>
+                <span id="cpuScore" class="score">0</span>
+            </div>
+        </section>
+
+        <div id="statusMessage" class="status-message">
+            Turno de: <span id="currentTurn">X</span>
+        </div>
+
+        <section id="board" class="board">
+            <button class="cell" data-index="0" aria-label="Casilla 1"></button>
+            <button class="cell" data-index="1" aria-label="Casilla 2"></button>
+            <button class="cell" data-index="2" aria-label="Casilla 3"></button>
+            <button class="cell" data-index="3" aria-label="Casilla 4"></button>
+            <button class="cell" data-index="4" aria-label="Casilla 5"></button>
+            <button class="cell" data-index="5" aria-label="Casilla 6"></button>
+            <button class="cell" data-index="6" aria-label="Casilla 7"></button>
+            <button class="cell" data-index="7" aria-label="Casilla 8"></button>
+            <button class="cell" data-index="8" aria-label="Casilla 9"></button>
+        </section>
+
+        <footer class="controls">
+            <div class="difficulty">
+                <label for="difficulty">Dificultad:</label>
+                <select id="difficulty">
+                    <option value="easy">Fácil (Aleatorio)</option>
+                    <option value="hard" selected>Imposible (Minimax)</option>
+                </select>
+            </div>
+            
+            <button id="resetBtn" class="btn-reset">Reiniciar Partida</button>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

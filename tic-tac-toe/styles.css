@@ -1,0 +1,274 @@
+/* ==========================================
+   1. VARIABLES DE PALETA Y NEÓN
+   ========================================== */
+:root {
+    --card-bg: rgba(10, 10, 16, 0.85);
+    --cell-bg: #0d0d16;
+    
+    --color-x: #00f0ff;
+    --shadow-x: rgba(0, 240, 255, 0.9);
+    
+    --color-o: #ff0055;
+    --shadow-o: rgba(255, 0, 85, 0.9);
+    
+    --color-text: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ==========================================
+   2. FONDO SUPER ILUMINADO Y ANIMADO
+   ========================================== */
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem;
+    color: var(--color-text);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(-45deg, #ff007f, #7928ca, #00d2ff, #00e676, #ffea00);
+    background-size: 400% 400%;
+    animation: gradientGlow 10s ease infinite;
+}
+
+@keyframes gradientGlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.5;
+    z-index: 0;
+    animation: floatOrbs 8s infinite alternate ease-in-out;
+}
+
+body::before {
+    background: #ff0055;
+    top: -10%;
+    left: -10%;
+}
+
+body::after {
+    background: #00f0ff;
+    bottom: -10%;
+    right: -10%;
+    animation-delay: -4s;
+}
+
+@keyframes floatOrbs {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(40px, 30px) scale(1.1); }
+}
+
+/* ==========================================
+   3. TARJETA PRINCIPAL COMPACTA
+   ========================================== */
+.game-container {
+    position: relative;
+    z-index: 1;
+    background: var(--card-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 24px;
+    padding: 1.2rem 1.4rem;
+    width: 100%;
+    max-width: 360px; /* Reducido para que entre completo */
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+}
+
+.game-header h1 {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+}
+
+.subtitle {
+    font-size: 0.8rem;
+    color: #d1d1d6;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+/* ==========================================
+   4. MARCADOR
+   ========================================== */
+.score-board {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 0.8rem;
+}
+
+.score-box {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 0.5rem 0.3rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.score-box .label {
+    font-size: 0.62rem;
+    display: block;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: #a1a1aa;
+}
+
+.score-box .score {
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.status-message {
+    font-size: 0.95rem;
+    font-weight: 800;
+    margin-bottom: 0.8rem;
+    color: #ffffff;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================
+   5. TABLERO DE CELDAS REAJUSTADO
+   ========================================== */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 12px;
+    border-radius: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.9);
+    margin-bottom: 1rem;
+}
+
+.cell {
+    aspect-ratio: 1;
+    background: var(--cell-bg);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 14px;
+    font-size: 2.3rem;
+    font-weight: 900;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cell:hover:not(.taken) {
+    transform: translateY(-3px);
+    background: #181826;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.cell.taken {
+    box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.9);
+    cursor: default;
+}
+
+.cell.x {
+    color: var(--color-x);
+    text-shadow: 
+        0 0 8px var(--shadow-x),
+        0 0 15px var(--shadow-x);
+    filter: drop-shadow(0 0 2px #000000);
+}
+
+.cell.o {
+    color: var(--color-o);
+    text-shadow: 
+        0 0 8px var(--shadow-o),
+        0 0 15px var(--shadow-o);
+    filter: drop-shadow(0 0 2px #000000);
+}
+
+.cell.winner {
+    background: #ffea00 !important;
+    color: #000000 !important;
+    text-shadow: none !important;
+    filter: none !important;
+    box-shadow: 0 0 20px #ffea00 !important;
+    animation: pulseWin 0.6s infinite alternate !important;
+}
+
+@keyframes pulseWin {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.05); }
+}
+
+/* ==========================================
+   6. CONTROLES Y BOTÓN REINICIAR
+   ========================================== */
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.difficulty {
+    font-weight: 800;
+    font-size: 0.8rem;
+    color: #e4e4e7;
+}
+
+.difficulty select {
+    background: #141420;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 4px 10px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 800;
+    outline: none;
+    cursor: pointer;
+    margin-left: 6px;
+    font-size: 0.8rem;
+}
+
+.btn-reset {
+    width: 100%;
+    padding: 10px;
+    font-size: 0.85rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #ff0055, #7928ca, #00f0ff);
+    background-size: 200% 200%;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-reset:hover {
+    transform: translateY(-2px);
+    background-position: right center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+}
+
+.btn-reset:active {
+    transform: translateY(1px);
+}
